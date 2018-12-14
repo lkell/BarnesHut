@@ -1,0 +1,38 @@
+{
+  "Size": 800,
+  "G": 50,
+  "Theta": 0.8,
+  "TimeStep": 0.005,
+  "Galaxies": {
+    "Galaxy1": {
+      "Model": "Disk",
+      "Position": [
+        200,
+        200
+      ],
+      "Velocity": [
+        15,
+        -10
+      ],
+      "Radius": 200,
+      "Mass": 10000,
+      "Particles": 2000,
+      "Color": "Red"
+    },
+    "Galaxy2": {
+      "Model": "Disk",
+      "Position": [
+        600,
+        600
+      ],
+      "Velocity": [
+        -15,
+        10
+      ],
+      "Radius": 200,
+      "Mass": 10000,
+      "Particles": 2000,
+      "Color": "Blue"
+    }
+  }
+}
