@@ -11,6 +11,7 @@ import utils.Vector2D;
 
 import javax.management.InvalidAttributeValueException;
 import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * The purpose of this class is to simulate the motion of the a collection of bodies due to the gravitational force in two dimensions.
@@ -41,7 +42,8 @@ public class BarnesHut {
         this.G = loader.getG();
         this.theta = loader.getTheta();
         this.timeStep = loader.getTimeStep();
-        this.quadrant = new Quadrant(new Vector2D(0, 0), loader.getSize());
+        int[] origin = loader.getOrigin();
+        this.quadrant = new Quadrant(new Vector2D(origin[0], origin[1]), loader.getSize());
         System.out.println(this.quadrant.lowerLeft());
         this.setUpGalaxies(loader.getGalaxies());
     }
@@ -62,6 +64,16 @@ public class BarnesHut {
      */
     public ArrayList<Particle> getParticles() {
         return particles;
+    }
+
+    /**
+     * Returns a stack of all the quadrants that make up the Barnes Hut tree.
+     * @return Stack of all Quadrants in the tree.
+     */
+    public Stack<Quadrant> getQuadrants() {
+        Stack<Quadrant> quadrants = new Stack<>();
+        root.addQuadrantsToStack(quadrants);
+        return quadrants;
     }
 
     /**

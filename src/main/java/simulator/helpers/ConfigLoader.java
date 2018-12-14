@@ -1,6 +1,7 @@
 package simulator.helpers;
 
 import com.google.common.io.Files;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,7 +17,8 @@ import java.util.Stack;
 public class ConfigLoader {
 
     private Stack<Galaxy> galaxies;
-    private int size = getSize();
+    private int size;
+    private int[] origin;
     private double G;
     private double theta;
     private double timeStep;
@@ -42,6 +44,8 @@ public class ConfigLoader {
 
     private void loadSimParams() throws JSONException {
         this.size = fileContents.getInt("Size");
+        JSONArray origin = fileContents.getJSONArray("Origin");
+        this.origin = new int[]{origin.getInt(0), origin.getInt(1)};
         this.G = fileContents.getDouble("G");
         this.theta = fileContents.getDouble("Theta");
         this.timeStep = fileContents.getDouble("TimeStep");
@@ -49,6 +53,10 @@ public class ConfigLoader {
 
     public int getSize() {
         return size;
+    }
+
+    public int[] getOrigin() {
+        return origin;
     }
 
     public double getG() {

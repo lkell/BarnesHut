@@ -3,6 +3,8 @@ package simulator.objects;
 import org.jetbrains.annotations.NotNull;
 import utils.Vector2D;
 
+import java.util.Stack;
+
 /**
  * Node in the Barnes Hut Tree. Contains information on the simulated region as well as the particles
  * contained in the node. Contains references to up to four children nodes.
@@ -22,6 +24,7 @@ public class Node {
         this.quadrant = quadrant;
         this.G = G;
     }
+
 
     /**
      * Used to add the particle to the current node. If the the node already contains a particle or
@@ -114,6 +117,26 @@ public class Node {
         if (upperRight != null)
             force = force.add(upperRight.getForce(particle, theta));
         return force;
+    }
+
+    /**
+     * Pushes the quadrant and the quadrant of all subnodes onto the stack
+     * @param quadrants Stack of quadrants
+     */
+    public void addQuadrantsToStack(Stack<Quadrant> quadrants) {
+        quadrants.push(quadrant);
+        if (upperLeft != null) {
+            upperLeft.addQuadrantsToStack(quadrants);
+        }
+        if (upperRight != null) {
+            upperRight.addQuadrantsToStack(quadrants);
+        }
+        if (lowerLeft != null) {
+            lowerLeft.addQuadrantsToStack(quadrants);
+        }
+        if (lowerRight != null) {
+            lowerRight.addQuadrantsToStack(quadrants);
+        }
     }
 
     /**

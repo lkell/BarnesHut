@@ -28,7 +28,7 @@ public class Vector2DTests {
 
     @Test
     public void testVectorMultiplication() {
-        Vector2D vec1 = new Vector2D(1,2);
+        Vector2D vec1 = new Vector2D(1, 2);
         Vector2D vec2 = new Vector2D(2, 4);
         Assertions.assertEquals(10, vec1.dot(vec2));
     }
