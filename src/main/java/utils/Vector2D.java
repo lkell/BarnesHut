@@ -20,6 +20,11 @@ public class Vector2D implements Vector<Vector2D> {
         this.y = y.doubleValue();
     }
 
+    public Vector2D(@NotNull double x, @NotNull double y) {
+        this.x = x;
+        this.y=y;
+    }
+
     /**
      * Returns a Vector2D object with 0 magnitude.
      * @return A null-vector Vector2D.

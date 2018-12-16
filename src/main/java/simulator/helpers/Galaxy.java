@@ -47,9 +47,6 @@ public class Galaxy {
             case "Yellow":
                 this.color = Color.YELLOW;
                 break;
-            case "PURPLE":
-                this.color = Color.ORANGE;
-                break;
             default:
                 this.color = Color.RED;
                 break;
