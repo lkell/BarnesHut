@@ -1,6 +1,6 @@
 package animate;
 
-import simulator.*;
+import simulator.BarnesHut;
 import simulator.objects.Quadrant;
 
 import java.awt.*;

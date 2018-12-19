@@ -143,7 +143,7 @@ public class Node {
      * Represents the aggregation of all the particles contained in the tree starting at the current node.
      * Contains information on the mass and center of mass of the particles.
      */
-    private static class ParticleAggregate {
+    private class ParticleAggregate {
 
         private double mass;
         private Vector2D centerOfMass;

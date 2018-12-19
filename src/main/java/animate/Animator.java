@@ -1,15 +1,11 @@
 package animate;
 
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
 import simulator.BarnesHut;
-import simulator.helpers.ConfigLoader;
 import simulator.objects.Particle;
 
-import javax.management.InvalidAttributeValueException;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -73,35 +69,24 @@ public class Animator extends JPanel {
      * one step and painting all of the particles.
      */
     public void animate() {
-        Long start = System.currentTimeMillis();
-        int i = 0;
         while (true) {
             advanceFrame();
             repaint();
-            if (i == 100) System.out.println(System.currentTimeMillis() - start);
-            i++;
         }
     }
 
-    public static void main(String[] args) throws IOException, InvalidAttributeValueException, JSONException {
-
-        String configFile;
-        if (args.length == 0) {
-            configFile = "src\\main\\resources\\DefaultConfig.json";
-        } else {
-            configFile = args[0];
+    /**
+     * Animates the simulation for the number of steps specified. Advances the simulation in each frame of the
+     * animation.
+     *
+     * @param steps The number of frames and simulation steps in the animation.
+     */
+    public void animate(int steps) {
+        Long start = System.currentTimeMillis();
+        for (int i = 0; i < steps; i++) {
+            advanceFrame();
+            repaint();
+            i++;
         }
-
-        ConfigLoader loader = new ConfigLoader(configFile);
-        BarnesHut simulator = new BarnesHut(loader);
-        Animator animator = new Animator(simulator);
-
-        JFrame f = new JFrame("Barnes Hut Simulator");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.add(animator);
-        f.setSize(800, 800);
-        f.setVisible(true);
-
-
     }
 }
