@@ -1,7 +1,7 @@
 package animate;
 
-import simulator.BarnesHut;
-import simulator.objects.Quadrant;
+import simulate.BarnesHut;
+import simulate.objects.Quadrant;
 
 import java.awt.*;
 import java.util.Stack;
@@ -16,7 +16,7 @@ public class QuadrantAnimator extends Animator {
     /**
      * Initializes the animate.
      *
-     * @param simulator Barnes Hut simulator instance.
+     * @param simulator Barnes Hut simulate instance.
      */
     public QuadrantAnimator(BarnesHut simulator) {
         super(simulator);
@@ -34,7 +34,7 @@ public class QuadrantAnimator extends Animator {
     }
 
     /**
-     * Used to paint all of the node quadrants in the simulator.
+     * Used to paint all of the node quadrants in the simulate.
      *
      * @param g2 Graphics2D object.
      */
@@ -46,7 +46,7 @@ public class QuadrantAnimator extends Animator {
     }
 
     /**
-     * Animates the simulation in real-time by continuously advancing the simulator
+     * Animates the simulation in real-time by continuously advancing the simulate
      * one step and painting all of the particles.
      */
     @Override

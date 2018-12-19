@@ -1,4 +1,4 @@
-package simulator.helpers;
+package simulate.helpers;
 
 import com.google.common.io.Files;
 import org.json.JSONArray;

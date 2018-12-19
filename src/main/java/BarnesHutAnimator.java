@@ -1,14 +1,17 @@
+import animate.Animator;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
-import simulator.BarnesHut;
-import simulator.helpers.ConfigLoader;
-import simulator.objects.Particle;
+import simulate.BarnesHut;
+import simulate.helpers.ConfigLoader;
+import simulate.objects.Particle;
+import simulate.objects.Quadrant;
 
 import javax.management.InvalidAttributeValueException;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * @author Leo Kell leokello@gmail.com
@@ -17,17 +20,17 @@ public class BarnesHutAnimator extends JPanel {
 
     private BarnesHut simulator;
     private ArrayList<Particle> particles;
+    private Stack<Quadrant> quadrants;
 
 
     /**
-     * Initializes the simulator object and stores the graphical objects used by the simulator.
+     * Initializes the simulate object and stores the graphical objects used by the simulate.
      *
      * @param simulator Object of class implementing the Simulator interface.
      */
     public BarnesHutAnimator(@NotNull BarnesHut simulator) {
         this.simulator = simulator;
         this.particles = simulator.getParticles();
-        Graphics2D g2 = (Graphics2D) getGraphics();
     }
 
 
@@ -43,10 +46,11 @@ public class BarnesHutAnimator extends JPanel {
         super.paintComponent(g2);
         setBackground(Color.BLACK);
         paintParticles(g2);
+//        paintQuadrants(g2);
     }
 
     /**
-     * Used to render all the graphical objects returned from the simulator.
+     * Used to render all the graphical objects returned from the simulate.
      * Helper method for {@link package.class#paintComponent(Graphics)}  label }
      *
      * @param g2 The Graphics2D object.
@@ -60,12 +64,20 @@ public class BarnesHutAnimator extends JPanel {
         }
     }
 
+    private void paintQuadrants(Graphics2D g2) {
+        g2.setColor(Color.BLUE);
+        for (Quadrant quadrant : quadrants) {
+            g2.draw(quadrant);
+        }
+    }
+
     /**
-     * Call the simulator's next() method so that that all particles obtain
+     * Call the simulate's next() method so that that all particles obtain
      * new positions and velocities for the next frame.
      */
     public void advanceFrame() {
         simulator.next();
+//        this.quadrants = simulate.getQuadrants();
     }
 
     public static void main(String[] args) throws IOException, InvalidAttributeValueException, JSONException {
@@ -79,7 +91,7 @@ public class BarnesHutAnimator extends JPanel {
 
         ConfigLoader loader = new ConfigLoader(configFile);
         BarnesHut simulator = new BarnesHut(loader);
-        BarnesHutAnimator animator = new BarnesHutAnimator(simulator);
+        Animator animator = new Animator(simulator);
 
         JFrame f = new JFrame("Barnes Hut Simulator");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

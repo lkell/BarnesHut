@@ -1,4 +1,4 @@
-package simulator.objects;
+package simulate.objects;
 
 import utils.Vector2D;
 

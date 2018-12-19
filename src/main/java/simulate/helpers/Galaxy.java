@@ -1,4 +1,4 @@
-package simulator.helpers;
+package simulate.helpers;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;

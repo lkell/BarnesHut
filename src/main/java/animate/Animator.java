@@ -1,8 +1,8 @@
 package animate;
 
 import org.jetbrains.annotations.NotNull;
-import simulator.BarnesHut;
-import simulator.objects.Particle;
+import simulate.BarnesHut;
+import simulate.objects.Particle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +20,7 @@ public class Animator extends JPanel {
     /**
      * Initializes the the Animator.
      *
-     * @param simulator Barnes Hut simulator instance.
+     * @param simulator Barnes Hut simulate instance.
      */
     public Animator(@NotNull BarnesHut simulator) {
         this.simulator = simulator;
@@ -43,7 +43,7 @@ public class Animator extends JPanel {
     }
 
     /**
-     * Used to paint all of the bodies in the simulator.
+     * Used to paint all of the bodies in the simulate.
      *
      * @param g2 The Graphics2D object.
      */
@@ -57,7 +57,7 @@ public class Animator extends JPanel {
     }
 
     /**
-     * Call the simulator's next() method so that that all particles obtain
+     * Call the simulate's next() method so that that all particles obtain
      * new positions and velocities for the next frame.
      */
     public void advanceFrame() {
@@ -65,7 +65,7 @@ public class Animator extends JPanel {
     }
 
     /**
-     * Animates the simulation in real-time by continuously advancing the simulator
+     * Animates the simulation in real-time by continuously advancing the simulate
      * one step and painting all of the particles.
      */
     public void animate() {

@@ -1,6 +1,6 @@
-package simulator.helpers;
+package simulate.helpers;
 
-import simulator.objects.Particle;
+import simulate.objects.Particle;
 import utils.Vector2D;
 
 import javax.management.InvalidAttributeValueException;
