@@ -5,7 +5,7 @@ Simulate and animate n-body gravitational interactions using the Barnes-Hut algo
 ## Future Updates
 Future updates to this project will include:
 - A Swing-based graphical user interface that will be used to create, run, save, and import animations. This interface will make use of the classes defined in this project.
-- A vectorless implementation of the Barnes Hut simulation. Using the custom Vector2D class aids in redability, but using primitive types in place of constantly creating new objects will improve the simulator performance.
+- A vectorless implementation of the Barnes Hut simulation. Using the custom Vector2D class aids in redability, but using primitive types in place of constantly creating new vector objects will improve the simulator performance.
 - Additional integration methods.
 
 ## About the Simulation
