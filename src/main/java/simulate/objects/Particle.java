@@ -41,6 +41,15 @@ public class Particle {
     }
 
     /**
+     * Returns the particle's size. The size has no impact on the simulation, but it can be useful when
+     * visualizing the simulation.
+     * @return Particle's size.
+     */
+    public int getSize() {
+        return this.size;
+    }
+
+    /**
      * Returns the particle's color
      * @return Color
      */
