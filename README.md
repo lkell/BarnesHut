@@ -6,7 +6,7 @@ Simulate and animate n-body gravitational interactions using the Barnes-Hut algo
 Future updates to this project will include:
 - An Exporter class that can be used to export the trajectories of all particles during a simulation into a file.
 - Updates to the Animator class so that it can create an animation using a Barnes Hut trajectories export file.
-- A vectorless implementation of the Barnes Hut simulation. Using the custom Vector2D class aids in redability, but constantly creating new objects instead of using primitive types decreases the performance of the simulator.
+- A vectorless implementation of the Barnes Hut simulation. Using the custom Vector2D class aids in redability, but constantly creating new objects instead of just using primitive types decreases the performance of the simulator.
 - Additional integration methods.
 
 ## About the Simulation
