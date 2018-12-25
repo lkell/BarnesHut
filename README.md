@@ -7,7 +7,7 @@ Future updates to this project will include:
 - An Exporter class that can be used to export the trajectories of all particles during a simulation into a file.
 - Updates to the Animator class so that it can create an animation using a Barnes Hut trajectories export file.
 - A vectorless implementation of the Barnes Hut simulation. Using the custom Vector2D class aids in redability, but constantly creating new objects instead of using primitive types decreases the performance of the simulator.
-- Additional integration methods, including Runge-Kutta.
+- Additional integration methods.
 
 ## About the Simulation
 Here are some useful links on the Barnes-Hut algorithm: 
