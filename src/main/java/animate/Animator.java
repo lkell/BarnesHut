@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * JPanel subclass that can be used to animate all the bodies in a Barnes Hut simulation.
  */
-public class Animator extends JPanel {
+public class Animator extends BarnesHutAnimator {
 
     protected BarnesHut simulator;
     private ArrayList<Particle> particles;
@@ -25,6 +25,7 @@ public class Animator extends JPanel {
     public Animator(@NotNull BarnesHut simulator) {
         this.simulator = simulator;
         this.particles = simulator.getParticles();
+        setBackground(Color.BLACK);
     }
 
 
@@ -35,10 +36,9 @@ public class Animator extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        super.paintComponent(g2);
-        setBackground(Color.BLACK);
         paintParticles(g2);
     }
 
@@ -62,31 +62,5 @@ public class Animator extends JPanel {
      */
     public void advanceFrame() {
         simulator.next();
-    }
-
-    /**
-     * Animates the simulation in real-time by continuously advancing the simulate
-     * one step and painting all of the particles.
-     */
-    public void animate() {
-        while (true) {
-            advanceFrame();
-            repaint();
-        }
-    }
-
-    /**
-     * Animates the simulation for the number of steps specified. Advances the simulation in each frame of the
-     * animation.
-     *
-     * @param steps The number of frames and simulation steps in the animation.
-     */
-    public void animate(int steps) {
-        Long start = System.currentTimeMillis();
-        for (int i = 0; i < steps; i++) {
-            advanceFrame();
-            repaint();
-            i++;
-        }
     }
 }

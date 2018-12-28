@@ -47,7 +47,7 @@ public class QuadrantAnimator extends Animator {
 
     /**
      * Animates the simulation in real-time by continuously advancing the simulate
-     * one step and painting all of the particles.
+     * one step and repainting the particles.
      */
     @Override
     public void advanceFrame() {

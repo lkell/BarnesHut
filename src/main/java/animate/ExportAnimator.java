@@ -19,14 +19,16 @@ import java.nio.file.Paths;
  * Animates an exported Barnes Hut simulation specified by given simulation directory. This directory must contain
  * valid ParticleProperties.json and Trajectories.csv files.
  */
-public class ExportAnimator extends JPanel {
+public class ExportAnimator extends BarnesHutAnimator {
 
     private String simDirectory;
     private CSVReader reader;
     private Particle[] particles;
+    private String[] nextLine;
 
     /**
      * Initializes the animator using the given simulation output directory.
+     *
      * @param simDir The Barnes Hut simulation export directory.
      * @throws FileNotFoundException If ParticleProperties.json and Trajectories.csv files not found in simDir.
      */
@@ -34,7 +36,17 @@ public class ExportAnimator extends JPanel {
         this.simDirectory = simDir;
         createParticles();
         String trajectoriesFile = Paths.get(simDir, "Trajectories.csv").toString();
-        reader = new CSVReader(new FileReader(trajectoriesFile));
+        try {
+            reader = new CSVReader(new FileReader(trajectoriesFile));
+        } catch (FileNotFoundException fe) {
+            throw new FileNotFoundException();
+        }
+        try {
+            reader.readNext(); // skips the header line
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
         setBackground(Color.BLACK);
     }
 
@@ -60,20 +72,34 @@ public class ExportAnimator extends JPanel {
         }
     }
 
-    public void animate(double frameRate) {}
+    public void animate(double frameRate) {
+    }
 
     /**
      * Steps through each state of the simulation and animates the particles.
-     * @throws IOException
      */
-    public void animate() throws IOException {
-        reader.readNext(); // Skips the header line
-        String[] nextLine;
-        while ((nextLine = reader.readNext()) != null) {
-            for (int i = 0; i < nextLine.length / 2; i++) {
-                particles[i].setPosition(Double.valueOf(nextLine[i*2]), Double.valueOf(nextLine[(2*i)+1]));
+    @Override
+    public void animate() {
+        try {
+            while ((nextLine = reader.readNext()) != null) {
+                for (int i = 0; i < nextLine.length / 2; i++) {
+                    particles[i].setPosition(Double.valueOf(nextLine[i * 2]), Double.valueOf(nextLine[(2 * i) + 1]));
+                }
+                repaint();
             }
-            repaint();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void advanceFrame() {
+        try {
+            nextLine = reader.readNext();
+            for (int i = 0; i < nextLine.length / 2; i++) {
+                particles[i].setPosition(Double.valueOf(nextLine[i * 2]), Double.valueOf(nextLine[(2 * i) + 1]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -87,7 +113,7 @@ public class ExportAnimator extends JPanel {
 
     private void paintParticles(Graphics2D g2) {
         g2.setColor(Color.GREEN);
-        for (Particle particle: particles) {
+        for (Particle particle : particles) {
             g2.setColor(particle.color);
             g2.draw(particle.getShape());
             g2.fill(particle.getShape());
@@ -114,7 +140,7 @@ public class ExportAnimator extends JPanel {
         }
 
         private Ellipse2D.Double getShape() {
-            return new Ellipse2D.Double(x-2, y-2, size, size);
+            return new Ellipse2D.Double(x - 2, y - 2, size, size);
         }
     }
 
