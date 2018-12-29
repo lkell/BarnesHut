@@ -10,7 +10,7 @@ public abstract class BarnesHutAnimator extends JPanel {
     /**
      * Advances the animator by one frame by incrementing the simulation one step.
      */
-    abstract void advanceFrame();
+    public abstract void advanceFrame();
 
     /**
      * Animates an entire Barnes Hut simulation.

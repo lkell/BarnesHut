@@ -15,6 +15,7 @@ public class Particle {
     private Vector2D velocity;
     private Color color;
     private int size;
+    private int bounds;
 
     public Particle(Vector2D position, Vector2D velocity, double mass, Color color, int size) {
         this.position = position;
@@ -22,6 +23,7 @@ public class Particle {
         this.mass = mass;
         this.color = color;
         this.size = size;
+        this.bounds = Math.floorDiv(size, 2);
     }
 
     public Particle(double x, double y, double vX, double vY, double mass, Color color, int size) {
@@ -30,6 +32,7 @@ public class Particle {
         this.mass = mass;
         this.color = color;
         this.size = size;
+        this.bounds = Math.floorDiv(size, 2);
     }
 
     /**
@@ -37,7 +40,7 @@ public class Particle {
      * @return Shape as Ellipse2D.Double
      */
     public Ellipse2D.Double getShape() {
-        return new Ellipse2D.Double(position.getX() - 2, position.getY() - 2, size, size);
+        return new Ellipse2D.Double(position.getX() - bounds, position.getY() - bounds, size, size);
     }
 
     /**
