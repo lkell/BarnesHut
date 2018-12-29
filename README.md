@@ -1,5 +1,7 @@
 # BarnesHut
-Simulate and animate n-body gravitational interactions using the Barnes-Hut algorithm. The BarnesHut class can be used to simulate the motion of gravitational bodies. The Animator and Exporter class can be used with a Simulator object to respectively visualze or export the trajectories of the simulation.
+Simulate and animate n-body gravitational interactions using the Barnes-Hut algorithm. The BarnesHut class can be used to simulate the motion of gravitational bodies. The Animator and Exporter classes can be used to respectively visualize or export the trajectories of a simulation.
+
+Below is a clip of of a Barnes Hut animation simulating the interaction of of two "disk" galaxies.
 
 ![Video demo](https://user-images.githubusercontent.com/24996165/50474096-d1163900-097c-11e9-8167-066d7aeaf71f.gif)
 
