@@ -119,7 +119,7 @@ public class LargeExporter {
     }
 
     public void createOutDir(String outPutDir) {
-        File directory = new File("outputDir");
+        File directory = new File(outPutDir);
         if (!directory.exists()) {
             directory.mkdirs();
         }
