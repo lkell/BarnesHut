@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * Trajectories.csv file. Since the the whole Trajectories output file is written line-by-line rather than all at once,
  * this class can be used to export "large" simulations with many steps.
  */
-public class LargeExporter implements Exporter {
+public class LargeExporter {
 
     private BarnesHut simulator;
     private ArrayList<Particle> particles;
@@ -162,6 +162,6 @@ public class LargeExporter implements Exporter {
         }
         ConfigLoader loader = new ConfigLoader(configFile);
         BarnesHut simulator = new BarnesHut(loader);
-        LargeExporter.exportSimulation(simulator, outputDir, 30000);
+        LargeExporter.exportSimulation(simulator, outputDir, 10000);
     }
 }
