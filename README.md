@@ -21,6 +21,7 @@ Future updates to this project will include:
   - A time index column is added to the Trajectories CSV.
   - A maximum output file size can be specified.
   - A desired "framerate" can be specified so that exported files can be reduced in size. The Exporter will omit steps in the simulation accordingly.
+- Additional GalaxyBuilder methods including methods for a more accurate disk galaxy, including a more accurate model for the central massive bulge as well as the decay rates. Updates will also include methods for a Ring galaxy, and optional models using Dark Matter and MOND. 
 
 ## About the Simulation
 Here are some useful links on the Barnes-Hut algorithm: 
