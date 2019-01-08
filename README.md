@@ -17,6 +17,7 @@ Future updates to this project will include:
 - A ConfigurationValidator class to validate the structure and content of a Simulation configuration file before that file is used to create a simulation. This class will output any error descriptions to the client.
 - Updates to the simulator input to allow physical units to be specified for the simulation. The Animators will make the appropriate conversion calculation to allow the simulation to be displayed on the screen.
 - Updates to the LargeExporter class so that a time index column is added to the Trajectories CSV.
+- Updates to the LargeExporter class so that a maximum output file size can be specified.
 
 ## About the Simulation
 Here are some useful links on the Barnes-Hut algorithm: 
