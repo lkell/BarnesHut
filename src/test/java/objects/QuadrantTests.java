@@ -41,5 +41,57 @@ public class QuadrantTests {
         }
     }
 
+    @Test
+    public void testDistanceToParticle() {
+        double distanceToCenter = 0;
+        Particle particle = new Particle(400, 400, 0, 0, 1, Color.RED, 1);
+        Assertions.assertEquals(quadrant.distanceToParticle(particle), distanceToCenter);
 
+        double distanceToCorner = 400 * Math.sqrt(2);
+        int[] endPoints = new int[]{0, 800};
+        for (int x: endPoints) {
+            for (int y: endPoints) {
+                particle.setPosition(new Vector2D(x, y));
+                Assertions.assertEquals(quadrant.distanceToParticle(particle), distanceToCorner);
+            }
+        }
+
+        double distanceToEdge = 400;
+        particle.setPosition(new Vector2D(0, 400));
+        Assertions.assertEquals(quadrant.distanceToParticle(particle), distanceToEdge);
+        particle.setPosition(new Vector2D(400, 0));
+        Assertions.assertEquals(quadrant.distanceToParticle(particle), distanceToEdge);
+        particle.setPosition(new Vector2D(400, 800));
+        Assertions.assertEquals(quadrant.distanceToParticle(particle), distanceToEdge);
+        particle.setPosition(new Vector2D(800, 400));
+        Assertions.assertEquals(quadrant.distanceToParticle(particle), distanceToEdge);
+    }
+
+    @Test
+    public void testUpperLeft() {
+        Quadrant upperLeft = quadrant.upperLeft();
+        Particle particle = new Particle(200, 200, 0, 0, 1, Color.RED, 1);
+        Assertions.assertEquals(upperLeft.distanceToParticle(particle), 0);
+    }
+
+    @Test
+    public void testUpperRight() {
+        Quadrant upperRight = quadrant.upperLeft();
+        Particle particle = new Particle(600, 200, 0, 0, 1, Color.RED, 1);
+        Assertions.assertEquals(upperRight.distanceToParticle(particle), 0);
+    }
+
+    @Test
+    public void lowerLeft() {
+        Quadrant lowerLeft = quadrant.upperLeft();
+        Particle particle = new Particle(400, 200, 0, 0, 1, Color.RED, 1);
+        Assertions.assertEquals(lowerLeft.distanceToParticle(particle), 0);
+    }
+
+    @Test
+    public void lowerRight() {
+        Quadrant lowerRight = quadrant.upperLeft();
+        Particle particle = new Particle(400, 400, 0, 0, 1, Color.RED, 1);
+        Assertions.assertEquals(lowerRight.distanceToParticle(particle), 0);
+    }
 }
